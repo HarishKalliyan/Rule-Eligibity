@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rule Evaluation</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Rule Evaluation</h1>
+        <form method="post" action="/">
+            <label for="rule">Rule:</label>
+            <input type="text" id="rule" name="rule" value="{{ request.form.rule }}">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" value="{{ request.form.age }}" min="0">
+            <label for="department">Department:</label>
+            <input type="text" id="department" name="department" value="{{ request.form.department }}">
+            <label for="income">Income:</label>
+            <input type="number" id="income" name="income" value="{{ request.form.income }}" min="0">
+            <label for="spend">Spend:</label>
+            <input type="number" id="spend" name="spend" value="{{ request.form.spend }}" min="0">
+            <button type="submit">Evaluate</button>
+            <button type="submit" name="clear" class="clear-button">Clear</button>
+        </form>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        {% if result is not none %}
+            <h2>Result: {{ result }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
